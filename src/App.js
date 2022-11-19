@@ -1,9 +1,6 @@
 import {BrowserRouter, Routes, Route, Link, redirect, useParams} from 'react-router-dom'
 import './App.css';
-
-const Blank = (props) => {
-	return redirect("/home");
-}
+import Catchall from './components/Catchall';
 
 const Home = (props) => {
 	return (
@@ -12,6 +9,10 @@ const Home = (props) => {
 		</>
 		)
 	
+}
+
+const Blank = (props) => {
+	return redirect("/home")
 }
 
 const Entry = (props) => {
@@ -35,7 +36,8 @@ function App() {
 		<BrowserRouter>
 		<div className="App">
 			<Routes>
-				<Route path="/" element={<Blank />} />
+				<Route path='/*' element={<Catchall />}/>
+				<Route path="/" element={<Home />} />
 				<Route path="/home" element={<Home />} />
 				<Route path="/:entry" element={<Entry />} />
 				<Route path="/:worrd/:coler/:colur" element={<Colors />}/>
